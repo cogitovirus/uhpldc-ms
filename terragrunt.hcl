@@ -1,13 +1,19 @@
-# Define the backend configuration for remote state storage
-remote_state {
-  backend = "azurerm"
-
-  config = {
-    resource_group_name  = "my-terraform-state"
-    storage_account_name = "mystorageaccount"
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "uhpldc-ms"
+    storage_account_name = "uhpldcmsstorage"
     container_name       = "tfstate"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
   }
 }
 
-# Optionally, include any other common configurations or settings
+remote_state {
+  backend = "azurerm"
+
+  config = {
+    resource_group_name  = "uhpldc-ms"
+    storage_account_name = "uhpldcmsstorage"
+    container_name       = "tfstate"
+    key                  = "${path_relative_to_include()}/terraform.tfstate"
+  }
+}

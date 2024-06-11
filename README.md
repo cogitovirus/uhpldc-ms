@@ -16,12 +16,45 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to set up and deploy the infrastructure:
 
-1. **Initialize Terragrunt:**
+1. **Create Azure Resources**:
+    ```sh
+    az group create --name uhpldc-ms --location eastus
+    az storage account create --name uhpldcmsstorage --resource-group uhpldc-ms --location eastus --sku Standard_LRS
+    az storage container create --name tfstate --account-name uhpldcmsstorage
+    ```
+
+2. **Configure Backend in Terragrunt**:
+
+    Ensure that your `terragrunt.hcl` includes the Azure backend configuration. This configuration should be placed at the root of your project:
+
+    ```hcl
+    terraform {
+      backend "azurerm" {
+        resource_group_name  = "uhpldc-ms"
+        storage_account_name = "uhpldcmsstorage"
+        container_name       = "tfstate"
+        key                  = "${path_relative_to_include()}/terraform.tfstate"
+      }
+    }
+
+    remote_state {
+      backend = "azurerm"
+
+      config = {
+        resource_group_name  = "uhpldc-ms"
+        storage_account_name = "uhpldcmsstorage"
+        container_name       = "tfstate"
+        key                  = "${path_relative_to_include()}/terraform.tfstate"
+      }
+    }
+    ```
+
+3. **Initialize Terragrunt:**
     ```sh
     terragrunt init
     ```
 
-2. **Apply the Terragrunt configuration:**
+4. **Apply the Terragrunt configuration:**
     ```sh
     terragrunt apply
     ```
