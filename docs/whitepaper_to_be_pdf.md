@@ -1,5 +1,3 @@
-Sure, here's the supplemented whitepaper with additional source references from Wikipedia and other relevant sources.
-
 # Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
 **Author: Wiktor Żołnierowicz**
 
