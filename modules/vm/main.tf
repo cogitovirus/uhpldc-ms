@@ -33,7 +33,7 @@ resource "azurerm_virtual_machine" "main" {
   location              = var.location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.main.id]
-  vm_size               = "Standard_DS1_v2"
+  vm_size               = var.vm_size
 
   storage_os_disk {
     name              = "osdisk"
@@ -43,10 +43,10 @@ resource "azurerm_virtual_machine" "main" {
   }
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
+    publisher = split(":", var.os_image)[0]
+    offer     = split(":", var.os_image)[1]
+    sku       = split(":", var.os_image)[2]
+    version   = split(":", var.os_image)[3]
   }
 
   os_profile {
@@ -68,3 +68,5 @@ variable "location" {}
 variable "resource_group_name" {}
 variable "admin_username" {}
 variable "admin_password" {}
+variable "vm_size" {}
+variable "os_image" {}
