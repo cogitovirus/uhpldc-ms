@@ -55,7 +55,26 @@ Follow these steps to set up and deploy the infrastructure:
     }
     ```
 
-4. **Initialize and Apply Terragrunt**:
+4. **Ensure Unique Variable Declarations**:
+
+    Check your `main.tf` and `variables.tf` files within each module to ensure that variables are declared only once.
+
+    Example `variables.tf` for the `resource-group` module:
+
+    ```hcl
+    variable "name" {
+      description = "The name of the resource group"
+      type        = string
+    }
+
+    variable "location" {
+      description = "The location of the resource group"
+      type        = string
+      default     = "eastus"
+    }
+    ```
+
+5. **Initialize and Apply Terragrunt**:
 
     Navigate to your project directory and run the following commands:
 
