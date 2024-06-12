@@ -2,10 +2,10 @@
 **Author: Wiktor Żołnierowicz**
 
 ## Abstract
-In this whitepaper, we introduce a novel approach for data processing and analysis using Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLD-MS). By integrating advanced data chromatography techniques with blockchain technology, we ensure secure, immutable, and efficient handling of high-speed data. The incorporation of smart contracts and autonomous agents further enhances data integrity and flow, providing a robust solution for modern data challenges.
+In this whitepaper, we introduce a novel approach for data processing and analysis using Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLDC-MS). By integrating advanced data chromatography techniques with blockchain technology, we ensure secure, immutable, and efficient handling of high-speed data. The incorporation of smart contracts and autonomous agents further enhances data integrity and flow, providing a robust solution for modern data challenges.
 
 ## Introduction
-The increasing volume and velocity of data in today's digital landscape necessitate innovative methods for its efficient processing and analysis. Traditional data handling techniques often fall short in terms of speed, security, and scalability. This paper proposes a cutting-edge methodology, Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLD-MS), to address these challenges. Our approach leverages the principles of high-performance liquid chromatography and mass spectrometry, applied to data streams, to achieve unprecedented performance and reliability.
+The increasing volume and velocity of data in today's digital landscape necessitate innovative methods for its efficient processing and analysis. Traditional data handling techniques often fall short in terms of speed, security, and scalability. This paper proposes a cutting-edge methodology, Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLDC-MS), to address these challenges. Our approach leverages the principles of high-performance liquid chromatography and mass spectrometry, applied to data streams, to achieve unprecedented performance and reliability.
 
 - **High-Performance Liquid Chromatography (HPLC)**: [Wikipedia: High-Performance Liquid Chromatography](https://en.wikipedia.org/wiki/High-performance_liquid_chromatography)
 - **Mass Spectrometry (MS)**: [Wikipedia: Mass Spectrometry](https://en.wikipedia.org/wiki/Mass_spectrometry)
@@ -51,12 +51,12 @@ Autonomous agents continuously monitor the data flow, addressing any issues such
 The separated data components are then analyzed using mass spectrometry techniques to identify and quantify each element accurately.
 
 ## Security and Privacy
-Data security and privacy are paramount in UHPLD-MS. The use of blockchain technology ensures that all data transactions are secure and tamper-proof. Additionally, data encryption is applied at various stages of the process, with keys supplied as needed to authorized entities. This layered security approach protects sensitive information from unauthorized access and ensures compliance with data privacy regulations.
+Data security and privacy are paramount in UHPLDC-MS. The use of blockchain technology ensures that all data transactions are secure and tamper-proof. Additionally, data encryption is applied at various stages of the process, with keys supplied as needed to authorized entities. This layered security approach protects sensitive information from unauthorized access and ensures compliance with data privacy regulations.
 - **Data Security**: [Wikipedia: Data Security](https://en.wikipedia.org/wiki/Data_security)
 - **Data Privacy**: [Wikipedia: Data Privacy](https://en.wikipedia.org/wiki/Information_privacy)
 
 ## Benefits and Applications
-The UHPLD-MS approach offers several key benefits:
+The UHPLDC-MS approach offers several key benefits:
 
 - **High Performance**: Capable of handling large volumes of data at high speeds without compromising accuracy or integrity.
 - **Security**: Blockchain technology ensures that all data transactions are secure and transparent.
