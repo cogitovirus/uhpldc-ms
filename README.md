@@ -79,23 +79,14 @@ Follow these steps to set up and deploy the infrastructure:
     Navigate to your project directory and run the following commands:
 
     ```sh
-    # Navigate to the resource group setup
-    cd terragrunt-project/live/dev/infrastructure
+    # Navigate to the project root
+    cd terragrunt-project
 
-    # Initialize Terragrunt
-    terragrunt init
+    # Initialize Terragrunt for all configurations
+    terragrunt init-all
 
-    # Apply the configuration to create the resource group
-    terragrunt apply
-
-    # Navigate to the VM setup
-    cd vm
-
-    # Initialize Terragrunt
-    terragrunt init
-
-    # Apply the configuration to create the VM
-    terragrunt apply
+    # Apply the configuration to create the resource group and VM
+    terragrunt apply-all
     ```
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.

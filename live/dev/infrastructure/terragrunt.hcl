@@ -1,3 +1,5 @@
+# terragrunt-project/live/dev/infrastructure/terragrunt.hcl
+
 terraform {
   source = "../../../modules/resource-group"
 }
