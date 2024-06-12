@@ -32,6 +32,9 @@ Autonomous agents are designed to monitor and manage the data flow. They can ide
 - **Autonomous Agents**: [Wikipedia: Intelligent Agent](https://en.wikipedia.org/wiki/Intelligent_agent)
 
 ## Data Processing Flow
+
+![Data Processing Flow Diagram](architecture-diagram.drawio.svg)
+
 ### Data Ingestion
 Data is ingested at high speeds and immediately subjected to chromatography, where it is separated into individual components based on predefined criteria.
 
