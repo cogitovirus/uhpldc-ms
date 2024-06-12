@@ -38,9 +38,6 @@ Autonomous agents are designed to monitor and manage the data flow. They can ide
 ### Data Ingestion
 Data is ingested at high speeds and immediately subjected to chromatography, where it is separated into individual components based on predefined criteria.
 
-### Data Analysis
-The separated data components are then analyzed using mass spectrometry techniques to identify and quantify each element accurately.
-
 ### Blockchain Registration
 As data is processed, each transaction is recorded on the blockchain, with metadata capturing the essential attributes of the data.
 
@@ -49,6 +46,9 @@ Smart contracts govern the processing rules, ensuring that data is handled accor
 
 ### Autonomous Agent Intervention
 Autonomous agents continuously monitor the data flow, addressing any issues such as data bottlenecks or stuck data to maintain efficient processing.
+
+### Data Analysis
+The separated data components are then analyzed using mass spectrometry techniques to identify and quantify each element accurately.
 
 ## Security and Privacy
 Data security and privacy are paramount in UHPLD-MS. The use of blockchain technology ensures that all data transactions are secure and tamper-proof. Additionally, data encryption is applied at various stages of the process, with keys supplied as needed to authorized entities. This layered security approach protects sensitive information from unauthorized access and ensures compliance with data privacy regulations.
