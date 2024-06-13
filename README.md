@@ -1,4 +1,5 @@
 # uhpldc-ms
+
 Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
 
 ## Introduction
@@ -8,6 +9,7 @@ Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
+
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
@@ -17,6 +19,7 @@ Before you begin, ensure you have the following installed:
 Follow these steps to set up and deploy the infrastructure:
 
 1. **Create Azure Resources**:
+
     ```sh
     az group create --name uhpldc-ms --location eastus
     az storage account create --name uhpldcmsstorage --resource-group uhpldc-ms --location eastus --sku Standard_LRS
@@ -90,6 +93,16 @@ Follow these steps to set up and deploy the infrastructure:
     ```
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
+
+## Teardown of dev/prod
+
+```sh
+# Navigate to the dev environment directory
+cd terragrunt-project/live/dev
+
+# Destroy all resources in the dev environment
+terragrunt destroy-all
+```
 
 ## Additional Information
 
