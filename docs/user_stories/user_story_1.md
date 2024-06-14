@@ -1,10 +1,12 @@
-# basic user story
+### Basic User Story
 
-1. in UI user is presented with a dropbox and an adress to a secure s3 bucket to which he/she will transfter the files to.
-2. Upon file drop, an adress to a single/multiple blockchain address is presented and saved in the user account.
-3. Files are processed through the system.
-4. Let's say one of the files is encrypted. The processing stops & the AI agent detects that the keys to decrypt the files are missing. Notification is sent to the user profile page.
-5. User adds a new cryptograpthic key in it's account and marks the required action as resolved.
-6. AI Agent is responsible for inspecting the key and adds it to the smart contract.
-7. Processing resumes. File is processed to the data analisys section.
-8. User can how visualize, join, query the data.
+1. In the UI, the user is presented with a dropbox and an address to a secure S3 bucket where they can transfer their files.
+2. Upon file drop, a single or multiple blockchain addresses are presented and saved in the user's account.
+3. The files are processed through the system.
+4. If a file is encrypted, the processing stops. The AI agent detects that the keys to decrypt the file are missing and sends a notification to the user's profile page.
+5. The user adds a new cryptographic key to their account and marks the required action as resolved.
+6. The AI agent inspects the key and adds it to the smart contract.
+7. Processing resumes.
+8. During mass spectrometry, all the metadata and statistics about the file are gathered.
+9. The file is processed into the data analysis section.
+10. The user can now visualize, join, and query the data.
