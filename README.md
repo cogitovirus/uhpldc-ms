@@ -6,6 +6,8 @@ Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
 
 Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
 
+For more details see the [Whitepaper](docs/whitepaper_to_be_pdf.md)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -26,70 +28,19 @@ Follow these steps to set up and deploy the infrastructure:
     az storage container create --name tfstate --account-name uhpldcmsstorage
     ```
 
-2. **Configure Backend in Terraform**:
+2. **Initialize and Apply Terragrunt**:
 
-    Ensure that your `main.tf` includes the Azure backend configuration. Here is an example for the `resource-group` module:
-
-    ```hcl
-    terraform {
-      backend "azurerm" {
-        resource_group_name  = "uhpldc-ms"
-        storage_account_name = "uhpldcmsstorage"
-        container_name       = "tfstate"
-        key                  = "resource-group/terraform.tfstate"
-      }
-    }
-    ```
-
-3. **Configure Global Terragrunt Settings**:
-
-    In the root of your project, create a `terragrunt.hcl` file with the following content:
-
-    ```hcl
-    remote_state {
-      backend = "azurerm"
-
-      config = {
-        resource_group_name  = "uhpldc-ms"
-        storage_account_name = "uhpldcmsstorage"
-        container_name       = "tfstate"
-        key                  = "${path_relative_to_include()}/terraform.tfstate"
-      }
-    }
-    ```
-
-4. **Ensure Unique Variable Declarations**:
-
-    Check your `main.tf` and `variables.tf` files within each module to ensure that variables are declared only once.
-
-    Example `variables.tf` for the `resource-group` module:
-
-    ```hcl
-    variable "name" {
-      description = "The name of the resource group"
-      type        = string
-    }
-
-    variable "location" {
-      description = "The location of the resource group"
-      type        = string
-      default     = "eastus"
-    }
-    ```
-
-5. **Initialize and Apply Terragrunt**:
-
-    Navigate to your project directory and run the following commands:
+    Navigate to the project root directory and run the following commands:
 
     ```sh
     # Navigate to the project root
-    cd terragrunt-project
+    cd uhpldc-ms
 
     # Initialize Terragrunt for all configurations
-    terragrunt init-all
+    terragrunt run-all init
 
     # Apply the configuration to create the resource group and VM
-    terragrunt apply-all
+    terragrunt run-all apply
     ```
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.

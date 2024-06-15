@@ -1,7 +1,7 @@
 # terragrunt-project/live/dev/synapse/terragrunt.hcl
 
-dependency "storage_account" {
-  config_path = "../"
+dependency "shared" {
+  config_path = "../infrastructure"
 }
 
 terraform {

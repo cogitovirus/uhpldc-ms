@@ -1,11 +1,11 @@
 # terragrunt-project/live/dev/infrastructure/terragrunt.hcl
 
 terraform {
-  source = "../../../modules/resource-group"
+  source = "../../../modules/shared-data-storage"
 }
 
 inputs = {
-  name     = "dev-resource-group"
+  name     = "uhpldc-ms"
   location = "eastus"
 }
 
