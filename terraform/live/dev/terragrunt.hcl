@@ -1,8 +1,4 @@
-# terragrunt-project/live/dev/terragrunt.hcl
-
-include {
-  path = find_in_parent_folders()
-}
+# File: /mnt/data/uhpldc-ms/uhpldc-ms/terraform/live/dev/terragrunt.hcl
 
 inputs = {
   resource_group_name = "uhpldc-ms"

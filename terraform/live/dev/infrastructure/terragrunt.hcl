@@ -1,12 +1,15 @@
-# terragrunt-project/live/dev/infrastructure/terragrunt.hcl
+# File: /mnt/data/uhpldc-ms/uhpldc-ms/terraform/live/dev/infrastructure/terragrunt.hcl
 
 terraform {
-  source = "../../../modules/shared-data-storage"
+  source = "../../../modules/shared-data-storage//"
 }
 
 inputs = {
-  name     = "uhpldc-ms"
-  location = "eastus"
+  name                = "uhpldc-ms"
+  location            = "eastus"
+  container_name      = "tfstate"
+  storage_account_name = "uhpldcmsstorage"
+  key                 = "infrastructure/terraform.tfstate"
 }
 
 include {

@@ -5,7 +5,7 @@ dependency "shared" {
 }
 
 terraform {
-  source = "../../../modules/synapse"
+  source = "../../../modules/synapse//"
 }
 
 inputs = {
