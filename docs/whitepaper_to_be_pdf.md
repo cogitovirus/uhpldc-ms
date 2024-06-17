@@ -60,6 +60,8 @@ Azure Synapse Analytics supports real-time data streaming, which enhances the UH
 
 ## Data Processing Flow
 
+![architecture diagram](architecture-diagram.drawio.svg)
+
 ### Data Ingestion
 
 Batch files or streaming data are ingested into the system. Each file in the batch or stream is read and parsed into a structured format, ensuring consistency in how the data is processed.
