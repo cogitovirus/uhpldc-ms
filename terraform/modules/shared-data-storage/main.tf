@@ -3,12 +3,7 @@ provider "azurerm" {
 }
 
 terraform {
-  backend "azurerm" {
-    resource_group_name  = "uhpldc-ms"
-    storage_account_name = "uhpldcmsstorage"
-    container_name       = "tfstate"
-    key                  = "infrastructure/terraform.tfstate"
-  }
+  backend "azurerm" {}
 }
 
 resource "azurerm_resource_group" "rg" {

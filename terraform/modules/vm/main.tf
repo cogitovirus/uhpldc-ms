@@ -3,6 +3,10 @@ provider "azurerm" {
 }
 
 terraform {
+  backend "azurerm" {}
+}
+
+terraform {
   backend "azurerm" {
     resource_group_name  = "uhpldc-ms"
     storage_account_name = "uhpldcmsstorage"
