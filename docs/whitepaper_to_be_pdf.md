@@ -4,7 +4,7 @@ Author: Wiktor Żołnierowicz
 
 ## Abstract
 
-In this whitepaper, we introduce a novel approach for data processing and analysis using Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLDC-MS). By integrating advanced data chromatography techniques with blockchain technology, we ensure secure, immutable, and efficient handling of high-speed data. The incorporation of smart contracts and autonomous agents further enhances data integrity and flow, providing a robust solution for modern data challenges.
+In this whitepaper, we introduce a novel approach for data processing and analysis using Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry (UHPLDC-MS). By integrating advanced data chromatography techniques with blockchain technology, we ensure secure, immutable, and efficient handling of high-speed data. The incorporation of smart contracts, autonomous agents, and real-time streaming capabilities further enhances data integrity and flow, providing a robust solution for modern data challenges.
 
 ## Introduction
 
@@ -17,13 +17,13 @@ The increasing volume and velocity of data in today's digital landscape necessit
 
 ### Data Chromatography
 
-Inspired by liquid chromatography, data chromatography initially treats each file as a single entity. This process involves pre-processing to clean and structure the data without separating it into distinct components. This ensures that the data is in a consistent and analyzable format.
+Inspired by liquid chromatography, data chromatography initially treats each file or stream of data as a single entity. This process involves pre-processing to clean and structure the data without separating it into distinct components. This ensures that the data is in a consistent and analyzable format.
 
 - **Liquid Chromatography**: [Wikipedia: Liquid Chromatography](https://en.wikipedia.org/wiki/Liquid_chromatography)
 
 ### Mass Spectrometry
 
-By applying mass spectrometry principles to data, we can precisely identify and quantify data elements within each file. This involves:
+By applying mass spectrometry principles to data, we can precisely identify and quantify data elements within each file or stream. This involves:
 
 - **Metadata Extraction**: Extracting metadata such as creation date, last modified date, file type, and size.
 - **Content Analysis**: Parsing the file to identify key structures, patterns, and elements.
@@ -50,15 +50,23 @@ Autonomous agents are designed to monitor and manage the data flow. They can ide
 
 - **Autonomous Agents**: [Wikipedia: Intelligent Agent](https://en.wikipedia.org/wiki/Intelligent_agent)
 
+### Streaming Data Support
+
+Azure Synapse Analytics supports real-time data streaming, which enhances the UHPLDC-MS framework by enabling continuous ingestion and analysis of streaming data. This is achieved through:
+
+- **Structured Streaming in Synapse Spark**: Allows real-time data processing using Spark's structured streaming capabilities integrated within Synapse【22†source】【23†source】.
+- **High Throughput Streaming Ingestion**: Supports data rates exceeding 200MB/sec, ideal for real-time reporting and analytics【25†source】.
+- **Integration with Azure Stream Analytics**: Facilitates advanced real-time analytics, anomaly detection, and pattern matching on streaming data before it reaches Synapse Analytics【24†source】【26†source】.
+
 ## Data Processing Flow
 
 ### Data Ingestion
 
-Batch files are ingested into the system. Each file in the batch is read and parsed into a structured format, ensuring consistency in how the data is processed.
+Batch files or streaming data are ingested into the system. Each file in the batch or stream is read and parsed into a structured format, ensuring consistency in how the data is processed.
 
 ### Data Chromatography
 
-Each file is treated as a single entity. Initial pre-processing cleans and structures the data without separating it into distinct components.
+Each file or stream is treated as a single entity. Initial pre-processing cleans and structures the data without separating it into distinct components.
 
 ### Blockchain Registration
 
@@ -66,36 +74,36 @@ Each file and its metadata are recorded on a blockchain. Hashes of the files and
 
 ### Smart Contract Execution
 
-Smart contracts execute predefined rules and conditions for processing the files. These contracts automate verification steps and ensure compliance with data handling policies, such as validating file formats and schemas.
+Smart contracts execute predefined rules and conditions for processing the files or streams. These contracts automate verification steps and ensure compliance with data handling policies, such as validating file formats and schemas.
 
 ### Autonomous Agent Intervention
 
-Autonomous agents continuously monitor the processing of the files. Agents detect and resolve bottlenecks or issues in real-time, ensuring efficient processing of the batch.
+Autonomous agents continuously monitor the processing of the files or streams. Agents detect and resolve bottlenecks or issues in real-time, ensuring efficient processing.
 
 ### Data Analysis
 
-Each file is analyzed to gather detailed information using mass spectrometry principles. This involves:
+Each file or stream is analyzed to gather detailed information using mass spectrometry principles. This involves:
 
 - **Metadata Extraction**
 - **Content Analysis**
 - **Anomaly Detection**
 - **Quantification**
 
-## Dashboard / Analysis of the Recent File
+## Dashboard / Analysis of the Recent File or Stream
 
 ### Recent File Analysis
 
-Generate a detailed analysis of the most recently ingested file. Create a dashboard or report with insights derived from the latest file:
+Generate a detailed analysis of the most recently ingested file or stream. Create a dashboard or report with insights derived from the latest data:
 
 - **Key Metrics**: Display critical metrics such as error rates, access patterns, and user activity.
 - **Visualizations**: Include charts and graphs to represent data trends and anomalies.
-- **Alerts and Notifications**: Highlight any significant findings or issues detected in the file.
+- **Alerts and Notifications**: Highlight any significant findings or issues detected in the file or stream.
 
-## Aggregate Analysis of Files of Given Schema
+## Aggregate Analysis of Files or Streams of Given Schema
 
 ### Aggregate Analysis
 
-Combine and analyze data from all files with the same schema to provide a comprehensive view:
+Combine and analyze data from all files or streams with the same schema to provide a comprehensive view:
 
 - **Historical Trends**: Analyze trends over time, such as changes in user behavior or error rates.
 - **Summary Statistics**: Calculate aggregate metrics, including averages, medians, and totals.
@@ -103,8 +111,8 @@ Combine and analyze data from all files with the same schema to provide a compre
 
 ### Example Workflow for E-Commerce Google Analytics Data
 
-1. **Data Ingestion**: A batch of Google Analytics data files is uploaded.
-2. **Data Chromatography**: Each file is parsed and structured without separation.
+1. **Data Ingestion**: A batch of Google Analytics data files or streaming data is uploaded.
+2. **Data Chromatography**: Each file or stream is parsed and structured without separation.
 3. **Blockchain Registration**: Hashes and metadata of each file are recorded on the blockchain.
 4. **Smart Contract Execution**: Smart contracts validate file formats and schemas.
 5. **Autonomous Agent Intervention**: Agents monitor processing and resolve any issues.
@@ -116,7 +124,7 @@ Combine and analyze data from all files with the same schema to provide a compre
 
 ### Final Output Table and Use in Machine Learning
 
-#### Dashboard for Recent File
+#### Dashboard for Recent File or Stream
 
 - **Components**:
   - **Metrics**: Total page views, average session duration, bounce rate.
