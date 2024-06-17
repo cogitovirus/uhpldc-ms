@@ -7,6 +7,7 @@ Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
 Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
 
 For more details see the [Whitepaper](docs/whitepaper_to_be_pdf.md)
+or [faq](docs/faq.md).
 
 ## Prerequisites
 
