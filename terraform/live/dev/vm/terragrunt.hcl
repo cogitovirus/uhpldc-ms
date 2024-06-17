@@ -1,10 +1,18 @@
-# terragrunt-project/live/dev/vm/terragrunt.hcl
-
 terraform {
   source = "../../../modules/vm//"
+  
+  backend "azurerm" {
+    resource_group_name   = "uhpldc-ms"
+    storage_account_name  = "uhpldcmsstorage"
+    container_name        = "tfstate"
+    key                   = "vm/terraform.tfstate"
+  }
 }
 
 inputs = {
+  container_name                       = "tfstate"
+  storage_account_name                 = "uhpldcmsstorage"
+  key                                  = "vm/terraform.tfstate"
   vnet_name           = "dev-vnet"
   subnet_name         = "dev-subnet"
   nic_name            = "dev-nic"

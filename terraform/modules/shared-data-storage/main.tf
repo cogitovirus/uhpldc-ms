@@ -1,5 +1,3 @@
-# terragrunt-project/modules/shared-storage-account/main.tf
-
 provider "azurerm" {
   features {}
 }
