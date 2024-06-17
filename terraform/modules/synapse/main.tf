@@ -4,6 +4,15 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "uhpldc-ms"
+    storage_account_name = "uhpldcmsstorage"
+    container_name       = "tfstate"
+    key                  = "synapse/terraform.tfstate"
+  }
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location

@@ -2,6 +2,15 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "uhpldc-ms"
+    storage_account_name = "uhpldcmsstorage"
+    container_name       = "tfstate"
+    key                  = "vm/terraform.tfstate"
+  }
+}
+
 resource "azurerm_virtual_network" "main" {
   name                = var.vnet_name
   address_space       = ["10.0.0.0/16"]

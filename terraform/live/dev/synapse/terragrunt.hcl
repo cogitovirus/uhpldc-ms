@@ -4,13 +4,6 @@ dependency "shared" {
 
 terraform {
   source = "../../../modules/synapse//"
-
-  backend "azurerm" {
-    resource_group_name   = "uhpldc-ms"
-    storage_account_name  = "uhpldcmsstorage"
-    container_name        = "tfstate"
-    key                   = "synapse/terraform.tfstate"
-  }
 }
 
 inputs = {
