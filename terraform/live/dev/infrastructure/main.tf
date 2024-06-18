@@ -2,6 +2,11 @@ provider "azurerm" {
   features {}
 }
 
+terraform {
+  backend "azurerm" {}
+}
+
+# TODO: rename the examples
 resource "azurerm_resource_group" "example" {
   name     = var.name
   location = var.location

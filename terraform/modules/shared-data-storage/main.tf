@@ -6,13 +6,22 @@ terraform {
   backend "azurerm" {}
 }
 
+resource "random_id" "unique" {
+  keepers = {
+    # Ensure unique id changes only when the value of `prefix` changes
+    prefix = var.prefix
+  }
+
+  byte_length = 8
+}
+
 resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
+  name     = "${var.resource_group_name}-${random_id.unique.hex}"
   location = var.location
 }
 
 resource "azurerm_storage_account" "storage_account" {
-  name                     = var.storage_account_name
+  name                     = "${var.storage_account_name}${random_id.unique.hex}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -22,7 +31,7 @@ resource "azurerm_storage_account" "storage_account" {
 }
 
 resource "azurerm_storage_data_lake_gen2_filesystem" "example" {
-  name               = "filesystem"
+  name               = "filesystem${random_id.unique.hex}"
   storage_account_id = azurerm_storage_account.storage_account.id
 }
 
