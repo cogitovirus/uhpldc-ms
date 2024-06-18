@@ -1,3 +1,3 @@
 # TODOs
 
-- [ ] vars for resource group etc
+- [ ] global vars for resource group etc

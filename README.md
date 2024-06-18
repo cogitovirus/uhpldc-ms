@@ -21,20 +21,12 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to set up and deploy the infrastructure:
 
-1. **Create Azure Resources**:
+1. **Initialize and Apply Terragrunt**:
+
+    Navigate to the project terraform directory and run the following commands:
 
     ```sh
-    az group create --name uhpldc-ms --location eastus
-    az storage account create --name uhpldcmsstorage --resource-group uhpldc-ms --location eastus --sku Standard_LRS
-    az storage container create --name tfstate --account-name uhpldcmsstorage
-    ```
-
-2. **Initialize and Apply Terragrunt**:
-
-    Navigate to the project root directory and run the following commands:
-
-    ```sh
-    # Navigate to the project root
+    # Navigate to the project terraform directory
     cd uhpldc-ms
 
     # Initialize Terragrunt for all configurations

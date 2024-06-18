@@ -3,12 +3,7 @@ provider "azurerm" {
 }
 
 terraform {
-  backend "azurerm" {
-    resource_group_name  = "uhpldc-ms"
-    storage_account_name = "uhpldcmsstorage"
-    container_name       = "tfstate"
-    key                  = "infrastructure/terraform.tfstate"
-  }
+  backend "azurerm" {}
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -26,9 +21,10 @@ resource "azurerm_storage_account" "storage_account" {
   is_hns_enabled            = true
 }
 
-resource "azurerm_storage_data_lake_gen2_filesystem" "example" {
-  name               = "filesystem"
-  storage_account_id = azurerm_storage_account.storage_account.id
+resource "azurerm_storage_container" "tfstate" {
+  name                  = var.container_name
+  storage_account_name  = azurerm_storage_account.storage_account.name
+  container_access_type = "private"
 }
 
 output "resource_group_name" {
@@ -39,6 +35,10 @@ output "location" {
   value = azurerm_resource_group.rg.location
 }
 
-output "storage_data_lake_gen2_filesystem_id" {
-  value = azurerm_storage_data_lake_gen2_filesystem.example.id
+output "storage_account_name" {
+  value = azurerm_storage_account.storage_account.name
+}
+
+output "container_name" {
+  value = azurerm_storage_container.tfstate.name
 }
