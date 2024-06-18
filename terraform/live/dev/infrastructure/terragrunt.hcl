@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../modules/shared-data-storage//"
+  source = "../../../modules/core-infrastructure//"
 }
 
 inputs = {
@@ -8,7 +8,7 @@ inputs = {
   container_name       = "tfstate"
   storage_account_name = "uhpldcmsstorage"
   key                  = "infrastructure/terraform.tfstate"
-  unique_id            = "dev001"  # Specify a unique identifier here
+  prefix               = "dev"
 }
 
 remote_state {

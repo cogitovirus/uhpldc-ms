@@ -9,12 +9,11 @@ dependency "infrastructure" {
     storage_data_lake_gen2_filesystem_id = "mock-filesystem-id"
   }
 
-  # Uncomment this line if you have applied the infrastructure module and it should not skip outputs
   skip_outputs = false
 }
 
 terraform {
-  source = "../../../modules/synapse//"
+  source = "../../../modules/core-infrastructure//"
 }
 
 inputs = {
