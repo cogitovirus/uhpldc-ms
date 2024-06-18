@@ -29,10 +29,10 @@ Follow these steps to set up and deploy the infrastructure:
     cd terraform/bootstrap
 
     # Initialize Terraform
-    terraform init
+    terragrunt init
 
     # Apply the configuration to create the resource group and storage account
-    terraform apply -var-file=terraform.tfvars
+    terragrunt apply
     ```
 
 2. **Initialize and Apply Terragrunt for Main Infrastructure**
@@ -41,7 +41,7 @@ Follow these steps to set up and deploy the infrastructure:
 
     ```sh
     # Navigate to the project terraform directory
-    cd terraform
+    cd ..
 
     # Initialize Terragrunt for all configurations
     terragrunt run-all init
