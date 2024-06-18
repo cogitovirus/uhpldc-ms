@@ -1,5 +1,8 @@
 # uhpldc-ms
 
+![promo](docs/spectreseek_promo.png)
+
+
 Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
 
 ## Introduction
