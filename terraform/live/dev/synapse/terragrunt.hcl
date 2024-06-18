@@ -13,7 +13,7 @@ dependency "infrastructure" {
 }
 
 terraform {
-  source = "../../../modules/core-infrastructure//"
+  source = "../../../modules/synapse//"
 }
 
 inputs = {

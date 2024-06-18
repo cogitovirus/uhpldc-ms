@@ -1,8 +1,7 @@
 <!-- markdownlint-disable-next-line MD041 -->
 ![uhpldc-ms](docs/spectreseek_promo.png)
 
-
-Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
+**U**ltra-**H**igh **P**erformance **L**iquid **D**ata **C**hromatography --with-- **M**ass **S**pectrometry
 
 ## Introduction
 
@@ -29,7 +28,7 @@ Follow these steps to set up and deploy the infrastructure:
 
     ```sh
     # Navigate to the project terraform directory
-    cd uhpldc-ms
+    cd terraform
 
     # Initialize Terragrunt for all configurations
     terragrunt run-all init
