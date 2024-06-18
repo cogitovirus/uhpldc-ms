@@ -1,6 +1,5 @@
-# uhpldc-ms
-
-![promo](docs/spectreseek_promo.png)
+<!-- markdownlint-disable-next-line MD041 -->
+![uhpldc-ms](docs/spectreseek_promo.png)
 
 
 Ultra-High Performance Liquid Data Chromatography with Mass Spectrometry
