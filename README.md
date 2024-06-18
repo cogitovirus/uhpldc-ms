@@ -22,7 +22,20 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to set up and deploy the infrastructure:
 
-1. **Initialize and Apply Terragrunt**:
+1. **Bootstrap Resource Group and Storage Account**
+
+    ```sh
+    # Navigate to the bootstrap directory
+    cd terraform/bootstrap
+
+    # Initialize Terraform
+    terraform init
+
+    # Apply the configuration to create the resource group and storage account
+    terraform apply -var-file=terraform.tfvars
+    ```
+
+2. **Initialize and Apply Terragrunt for Main Infrastructure**
 
     Navigate to the project terraform directory and run the following commands:
 
@@ -36,6 +49,8 @@ Follow these steps to set up and deploy the infrastructure:
     # Apply the configuration to create the resource group and VM
     terragrunt run-all apply
     ```
+
+    
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
 

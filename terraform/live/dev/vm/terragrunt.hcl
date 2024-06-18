@@ -1,3 +1,16 @@
+dependency "infrastructure" {
+  config_path = "../infrastructure"
+
+  mock_outputs = {
+    resource_group_name  = "uhpldc-ms"
+    storage_account_name = "uhpldcmsstorage"
+    container_name       = "tfstate"
+    location             = "eastus"
+  }
+
+  skip_outputs = false
+}
+
 terraform {
   source = "../../../modules/vm//"
 }
