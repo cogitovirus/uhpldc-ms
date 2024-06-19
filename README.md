@@ -22,7 +22,15 @@ Before you begin, ensure you have the following installed:
 
 Follow these steps to set up and deploy the infrastructure:
 
-1. **Bootstrap Resource Group and Storage Account**
+Ensure you are authenticated to Azure CLI before running the commands. You can authenticate using Azure Active Directory (Azure AD) or provide storage account credentials.
+
+1. **Authenticate using Azure AD**:
+
+    ```sh
+    az login
+    ```
+
+2. **Bootstrap Resource Group and Storage Account**
 
     ```sh
     # Navigate to the bootstrap directory
@@ -35,13 +43,13 @@ Follow these steps to set up and deploy the infrastructure:
     terragrunt apply
     ```
 
-2. **Initialize and Apply Terragrunt for Main Infrastructure**
+3. **Initialize and Apply Terragrunt for Main Infrastructure**
 
-    Navigate to the project terraform directory and run the following commands:
+    Navigate to the project terraform live directory and run the following commands (example for dev):
 
     ```sh
     # Navigate to the project terraform directory
-    cd ..
+    cd terraform/live/dev
 
     # Initialize Terragrunt for all configurations
     terragrunt run-all init
@@ -49,8 +57,6 @@ Follow these steps to set up and deploy the infrastructure:
     # Apply the configuration to create the resource group and VM
     terragrunt run-all apply
     ```
-
-    
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
 
