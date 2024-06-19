@@ -49,11 +49,3 @@ resource "azurerm_synapse_workspace" "synapse_workspace" {
   managed_virtual_network_enabled      = true
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.example.id
 }
-
-output "synapse_workspace_id" {
-  value = azurerm_synapse_workspace.synapse_workspace.id
-}
-
-output "storage_account_id" {
-  value = azurerm_storage_account.storage_account.id
-}
