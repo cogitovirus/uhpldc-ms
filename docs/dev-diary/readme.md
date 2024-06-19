@@ -10,3 +10,6 @@
 - [ ] UI design
 
 ## low priority
+
+- [ ] remove 'example' from resource names
+- [ ] store location in a single variable

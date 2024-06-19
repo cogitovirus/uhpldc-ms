@@ -11,6 +11,10 @@ dependency "infrastructure" {
   skip_outputs = false
 }
 
+dependency "bootstrap" {
+  config_path = "../../../bootstrap"
+}
+
 terraform {
   source = "../../../modules/vm//"
 }
@@ -24,7 +28,7 @@ inputs = {
   nic_name                             = "dev-nic"
   vm_name                              = "dev-vm"
   location                             = "eastus"
-  resource_group_name                  = "uhpldc-ms"
+  resource_group_name                  = dependency.bootstrap.outputs.resource_group_name
   admin_username                       = "azureuser"
   admin_password                       = "Password123!"
   vm_size                              = "Standard_B1ls"

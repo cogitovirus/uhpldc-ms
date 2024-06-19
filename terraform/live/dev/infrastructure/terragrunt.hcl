@@ -2,6 +2,10 @@ terraform {
   source = "../../../modules/core-infrastructure//"
 }
 
+dependency "bootstrap" {
+  config_path = "../../../bootstrap"
+}
+
 inputs = {
   name                 = "uhpldc-ms"
   location             = "eastus"
@@ -9,6 +13,7 @@ inputs = {
   storage_account_name = "uhpldcmsstorage"
   key                  = "infrastructure/terraform.tfstate"
   prefix               = "dev"
+  resource_group_name  = dependency.bootstrap.outputs.resource_group_name
 }
 
 remote_state {
