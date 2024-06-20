@@ -12,7 +12,7 @@ dependency "infrastructure" {
 }
 
 dependency "bootstrap" {
-  config_path = "../../../bootstrap"
+  config_path = "../../../modules/bootstrap//"
 }
 
 terraform {
