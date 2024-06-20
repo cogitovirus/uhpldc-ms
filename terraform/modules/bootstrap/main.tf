@@ -1,3 +1,5 @@
+# creates a resource group, storage account and container for storing terraform state
+
 provider "azurerm" {
   features {}
 }
