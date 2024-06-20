@@ -30,20 +30,7 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     az login
     ```
 
-2. **Bootstrap Resource Group and Storage Account**
-
-    ```sh
-    # Navigate to the bootstrap directory
-    cd terraform/bootstrap
-
-    # Initialize Terraform
-    terragrunt init
-
-    # Apply the configuration to create the resource group and storage account
-    terragrunt apply
-    ```
-
-3. **Initialize and Apply Terragrunt for Main Infrastructure**
+2. **Initialize and Apply Terragrunt for Main Infrastructure**
 
     Navigate to the project terraform live directory and run the following commands (example for dev):
 

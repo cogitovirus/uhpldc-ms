@@ -12,7 +12,10 @@ dependency "infrastructure" {
 }
 
 dependency "bootstrap" {
-  config_path = "../../../modules/bootstrap//"
+  config_path = "../bootstrap//"
+  mock_outputs = {
+    resource_group_name = "uhpldc-ms-rg"
+  }
 }
 
 terraform {
@@ -20,6 +23,7 @@ terraform {
 }
 
 inputs = {
+  resource_group_name                  = dependency.bootstrap.outputs.resource_group_name
   container_name                       = "tfstate"
   storage_account_name                 = "uhpldcmsstorage"
   key                                  = "vm/terraform.tfstate"
@@ -28,7 +32,6 @@ inputs = {
   nic_name                             = "dev-nic"
   vm_name                              = "dev-vm"
   location                             = "eastus"
-  resource_group_name                  = dependency.bootstrap.outputs.resource_group_name
   admin_username                       = "azureuser"
   admin_password                       = "Password123!"
   vm_size                              = "Standard_B1ls"

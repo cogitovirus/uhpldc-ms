@@ -13,7 +13,10 @@ dependency "infrastructure" {
 }
 
 dependency "bootstrap" {
-  config_path = "../../../modules/bootstrap//"
+  config_path = "../bootstrap//"
+  mock_outputs = {
+    resource_group_name = "uhpldc-ms-rg"
+  }
 }
 
 terraform {
