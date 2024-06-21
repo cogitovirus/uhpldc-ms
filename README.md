@@ -30,7 +30,20 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     az login
     ```
 
-2. **Initialize and Apply Terragrunt for Main Infrastructure**
+2. **Initialize and run the bootstrap script**
+
+    ```sh
+    # Navigate to the bootstrap directory
+    cd terraform/live/dev/bootstrap
+
+    # initialize terragrunt
+    terragrunt init
+
+    # apply the resource group and storage
+    terragrunt apply
+    ```
+
+3. **Initialize and Apply Terragrunt for Main Infrastructure**
 
     Navigate to the project terraform live directory and run the following commands (example for dev):
 
@@ -39,10 +52,10 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     cd terraform/live/dev
 
     # Initialize Terragrunt for all configurations
-    terragrunt run-all init
+    terragrunt run-all init --exclude-dir bootstrap
 
     # Apply the configuration to create the resource group and VM
-    terragrunt run-all apply
+    terragrunt run-all apply --exclude-dir bootstrap
     ```
 
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
