@@ -1,7 +1,8 @@
-# dev diary
+# Tasks
 
 ## high priority
 
+- [ ] alex + wiktor = terragrunt apply for synapse POC
 - [ ] read docs on synapse
 - [ ] microsoft training for synapse
 - [ ] discord - zapier setup
