@@ -1,5 +1,5 @@
 terraform {
-  source = "../../..//envs/dev"
+  source = "../.."
 }
 
 include {
@@ -7,5 +7,5 @@ include {
 }
 
 inputs = {
-  synapse_sql_password = "seCuRe123$%^"
+  synapse_sql_password = "seCuRe123"
 }
