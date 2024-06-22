@@ -4,6 +4,7 @@
 
 - [ ] read docs on synapse
 - [ ] microsoft training for synapse
+- [ ] discord - zapier setup
 
 ## medium priority
 

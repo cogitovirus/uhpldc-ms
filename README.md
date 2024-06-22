@@ -33,8 +33,8 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 2. **Initialize and run the bootstrap script**
 
     ```sh
-    # Navigate to the bootstrap directory
-    cd terraform/live/dev/bootstrap
+    # Navigate to the environment directory
+    cd terraform/envs/dev/
 
     # initialize terragrunt
     terragrunt init
@@ -43,28 +43,13 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     terragrunt apply
     ```
 
-3. **Initialize and Apply Terragrunt for Main Infrastructure**
-
-    Navigate to the project terraform live directory and run the following commands (example for dev):
-
-    ```sh
-    # Navigate to the project terraform directory
-    cd terraform/live/dev
-
-    # Initialize Terragrunt for all configurations
-    terragrunt run-all init --exclude-dir bootstrap
-
-    # Apply the configuration to create the resource group and VM
-    terragrunt run-all apply --exclude-dir bootstrap
-    ```
-
 This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
 
 ## Teardown of dev/prod
 
 ```sh
 # Navigate to the dev environment directory
-cd terragrunt-project/live/dev
+cd terragrunt/envs/dev
 
 # Destroy all resources in the dev environment
 terragrunt destroy-all
