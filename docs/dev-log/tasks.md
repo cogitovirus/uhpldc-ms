@@ -1,8 +1,10 @@
 # Tasks
 
+v0.1
+
 ## high priority
 
-- [ ] alex + wiktor = terragrunt apply for synapse POC
+- [ ] awaitk + wzolni = terragrunt apply for synapse POC
 - [ ] read docs on synapse
 - [ ] microsoft training for synapse
 - [ ] discord - zapier setup
