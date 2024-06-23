@@ -12,6 +12,7 @@ v0.1
 ## medium priority
 
 - [ ] UI design
+- [ ] secure the exposed password
 
 ## low priority
 

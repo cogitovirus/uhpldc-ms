@@ -30,20 +30,15 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     az login
     ```
 
-2. **Initialize and run the bootstrap script**
+2. **run the bootstrap scripts**
 
     ```sh
-    # Navigate to the environment directory
-    cd terraform/envs/dev/
-
-    # initialize terragrunt
+    cd live/dev/bootstrap
     terragrunt init
-
-    # apply the resource group and storage
     terragrunt apply
     ```
 
-This will provision the necessary resources in Azure using the configurations defined in your Terragrunt and Terraform files.
+3. Create the rest of the infrastructure
 
 ## Teardown of dev/prod
 
