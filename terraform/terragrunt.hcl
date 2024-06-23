@@ -1,10 +1,26 @@
-remote_state {
-  backend = "local"
-  config = {
-    path = "${path_relative_to_include()}/terraform.tfstate"
+terraform {
+  extra_arguments "init_args" {
+    commands = [
+      "init"
+    ]
   }
 }
 
-inputs = {
-  environment = get_env("TF_VAR_ENV", "dev")
+generate "provider" {
+  path      = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.109.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+EOF
 }

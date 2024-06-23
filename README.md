@@ -33,7 +33,7 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 2. **run the bootstrap scripts**
 
     ```sh
-    cd live/dev/bootstrap
+    cd terraform/live/dev/bootstrap
     terragrunt init
     terragrunt apply
     ```
