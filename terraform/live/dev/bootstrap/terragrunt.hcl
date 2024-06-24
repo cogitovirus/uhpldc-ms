@@ -1,6 +1,7 @@
 locals {
-  env     = get_env("TF_ENV", "dev")  # Use TF_ENV if set, default to "dev" if not
-  project = get_env("TF_PROJECT", "")  # Use TF_PROJECT if set, default to empty string if not
+  env     = lower(get_env("TF_ENV", "dev"))
+  project = lower(get_env("TF_PROJECT", ""))
+  random_suffix = format("%06d", rand(1, 999999))
 }
 
 include {
@@ -10,7 +11,7 @@ include {
 inputs = {
   resource_group_name  = "tfstate-${local.env}-${local.project}-rg"
   location             = "Poland Central"
-  storage_account_name = "tfstate${local.env}${local.project}sa"
+  storage_account_name = "tf${local.env}${local.project}${local.random_suffix}"
   container_name       = "tfstate"
 }
 

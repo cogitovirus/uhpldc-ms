@@ -30,11 +30,11 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     az login
     ```
 
-2. **export environment variables**
+2. **export environment variables (or put them in your .bashrc / zshrc)**
 
     ```sh
-    export TF_ENV="dev"
-    export TF_PROJECT="uhpdlc"
+    export TF_ENV="0dev0wz"
+    export TF_PROJECT="ulc0wz"
     ```
 
 3. **run the bootstrap scripts**
