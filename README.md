@@ -30,7 +30,14 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     az login
     ```
 
-2. **run the bootstrap scripts**
+2. **export environment variables**
+
+    ```sh
+    export TF_ENV="dev"
+    export TF_PROJECT="uhpdlc"
+    ```
+
+3. **run the bootstrap scripts**
 
     ```sh
     cd terraform/live/dev/bootstrap
@@ -38,7 +45,7 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     terragrunt apply
     ```
 
-3. Create the rest of the infrastructure
+4; Create the rest of the infrastructure
 
 ## Teardown of dev/prod
 
