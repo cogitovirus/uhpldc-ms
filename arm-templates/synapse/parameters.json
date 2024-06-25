@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "value": "synapse-workspace-dev-polandcentral"
+        },
+        "location": {
+            "value": "Poland Central"
+        },
+        "sqlAdministratorLogin": {
+            "value": "sqladmin"
+        },
+        "sqlAdministratorLoginPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/<subscription-id>/resourceGroups/<key-vault-resource-group>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"
+                },
+                "secretName": "synapse-sql-admin-password"
+            }
+        }
+    }
+}
