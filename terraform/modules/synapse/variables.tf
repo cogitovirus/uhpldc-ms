@@ -1,19 +1,29 @@
-variable "name" {
-  type        = string
-  description = "Name of the Azure Synapse workspace"
-}
+# /Users/wiktor/Projects/uhpldc-ms/terraform/modules/synapse/variables.tf
 
 variable "resource_group_name" {
-  type        = string
-  description = "Name of the Azure resource group"
+  type = string
 }
 
 variable "location" {
-  type        = string
-  description = "Azure region where resources will be created"
+  type = string
 }
 
-variable "environment" {
-  type        = string
-  description = "Environment name (used in storage account name)"
+variable "storage_account_name" {
+  type = string
+}
+
+variable "storage_container_name" {
+  type = string
+}
+
+variable "synapse_workspace_name" {
+  type = string
+}
+
+variable "sql_administrator_login" {
+  type = string
+}
+
+variable "sql_administrator_login_password" {
+  type = string
 }

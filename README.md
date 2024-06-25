@@ -33,8 +33,8 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 2. **export environment variables (or put them in your .bashrc / zshrc)**
 
     ```sh
-    export TF_ENV="0dev0wz"
-    export TF_PROJECT="ulc0wz"
+    export TF_ENV="devwz"
+    export TF_PROJECT="ulcwz"
     ```
 
 3. **run the bootstrap scripts**
@@ -45,11 +45,9 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     terragrunt apply
     ```
 
-    ```sh
-    terragrunt run-all apply --auto-approve
-    ```
+4. Copy the outputs, you will need them in a bit (apperantly I suck at terraform and can't link two things together)
 
-4; Create the rest of the infrastructure
+5. Setup synapse
 
 ## Teardown of dev/prod
 

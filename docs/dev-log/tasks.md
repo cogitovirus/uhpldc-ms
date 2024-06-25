@@ -11,6 +11,7 @@ v0.1
 
 ## medium priority
 
+- [ ] setup - link rg with synapse. one command setup.
 - [ ] UI design
 - [ ] secure the exposed password
 
