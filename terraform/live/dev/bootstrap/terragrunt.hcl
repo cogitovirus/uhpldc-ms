@@ -1,7 +1,8 @@
 locals {
   env     = lower(get_env("TF_ENV", "dev"))
   project = lower(get_env("TF_PROJECT", ""))
-  random_suffix = format("%06d", rand(1, 999999))
+  timestamp = formatdate("YYYYMMDDhhmmss", timestamp())
+  random_suffix = substr(md5(local.timestamp), 0, 6)
 }
 
 include {

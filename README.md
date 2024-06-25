@@ -45,6 +45,10 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
     terragrunt apply
     ```
 
+    ```sh
+    terragrunt run-all apply --auto-approve
+    ```
+
 4; Create the rest of the infrastructure
 
 ## Teardown of dev/prod
