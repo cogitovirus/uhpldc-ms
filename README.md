@@ -5,18 +5,17 @@
 
 ## Introduction
 
+Big data processing based on first principles and system thinking.
+
 Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
 
-For more details see the [Whitepaper](docs/whitepaper_to_be_pdf.md)
-or [faq](docs/faq.md).
+For more details see the [Whitepaper](docs/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
 
 ## Installation
 
@@ -24,16 +23,25 @@ Follow these steps to set up and deploy the infrastructure:
 
 Ensure you are authenticated to Azure CLI before running the commands. You can authenticate using Azure Active Directory (Azure AD) or provide storage account credentials.
 
-### Using azure resource manager
+### Using azure resource manager (prefered)
 
 1. **Open scripts/deploy and adjust the parameters**
 2. **run the script**
+
+    ```sh
+    ./deploy.sh
+    ```
 
 #### Teardown
 
 TODO: empty
 
-### Using terraform (in progress)
+### Using terraform (not supported yet)
+
+make sure you have terraform and terragrunt installed:
+
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
 
 1. **Authenticate using Azure AD**:
 
