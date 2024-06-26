@@ -29,6 +29,10 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 1. **Open scripts/deploy and adjust the parameters**
 2. **run the script**
 
+#### Teardown
+
+TODO: empty
+
 ### Using terraform (in progress)
 
 1. **Authenticate using Azure AD**:
