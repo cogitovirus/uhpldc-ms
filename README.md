@@ -9,7 +9,7 @@ Big data processing based on first principles and system thinking.
 
 Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
 
-For more details see the [Whitepaper](docs/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
+For more details see the [Whitepaper](docs/whitepaper/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
 
 ## Prerequisites
 

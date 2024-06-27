@@ -55,35 +55,3 @@ Steps to Create a Custom Asset on Corda
         }
     }
     ```
-
- Ethereum is a popular choice for creating custom tokens due to its robust support for smart contracts and token standards such as ERC-20 and ERC-721.
-
-Steps to Create Your Own Token on Ethereum via Azure Blockchain Service
-
-1. Set Up Azure Blockchain Service:
-    • Go to the Azure portal and create a new instance of Azure Blockchain Service.
-    • Choose Ethereum as your blockchain protocol.
-2. Write a Smart Contract for Your Token:
-    • Use Solidity to write a smart contract for your custom token. Below is an example of an ERC-20 token contract:
-
-    ```sol
-    pragma solidity ^0.8.0;
-
-    import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-    contract MyToken is ERC20 {
-        constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
-            _mint(msg.sender, initialSupply);
-        }
-    }
-    ```
-
-3. Deploy the Smart Contract:
-    • Use a tool like Truffle or the Azure Blockchain Development Kit to compile and deploy your token contract to the Azure Blockchain Service.
-
-    ```sh
-    truffle migrate --network azure
-    ```
-
-4. Interact with Your Token:
-    • Once deployed, you can interact with your token contract using Web3.js or any Ethereum-compatible wallet.
