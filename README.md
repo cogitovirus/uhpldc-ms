@@ -5,9 +5,9 @@
 
 ## Introduction
 
-Big data processing based on first principles and system thinking.
+**Big data processing based on first principles and system thinking.**
 
-Azure + Terragrunt + Synapse + LLMs + Blockchain = uhpldc-ms
+Azure + Synapse + LLMs + Corda = uhpldc-ms
 
 For more details see the [Whitepaper](docs/whitepaper/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
 
@@ -28,13 +28,15 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 1. **Open scripts/deploy and adjust the parameters**
 2. **run the script**
 
-    ```sh
-    ./deploy.sh
-    ```
+```sh
+./scripts/deploy.sh
+```
 
 #### Teardown
 
-TODO: empty
+```sh
+./scripts/teardown.sh
+```
 
 ### Using terraform (not supported yet)
 

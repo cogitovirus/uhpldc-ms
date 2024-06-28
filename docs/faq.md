@@ -51,3 +51,19 @@ The integration of blockchain technology within the Ultra-High Performance Liqui
    - **Smart Contracts and Autonomous Agents**: These components ensure that data processing rules are automatically enforced, reducing manual intervention and potential bottlenecks, thereby maintaining overall system performance.
 
 In summary, while blockchain does introduce some overhead, its implementation in the UHPLDC-MS system is optimized to balance performance with the benefits of enhanced security and data integrity. For applications where these features are not crucial, the system can be configured to minimize the blockchain’s impact, ensuring high performance even with large data volumes.
+
+## Why Corda was selected as the underlaying blockchain technology?
+
+Corda was selected as the underlying blockchain technology for several reasons:
+
+1. Identity Assurance: Corda emphasizes knowing and verifying the identities of transaction participants, which is crucial for establishing trust in financial and regulated environments.
+
+2. Privacy: Corda allows for private networks where only involved parties can see transaction details, ensuring confidentiality.
+
+3. Compliance: Designed with the financial industry in mind, Corda integrates seamlessly with existing financial systems and complies with regulatory requirements.
+
+4. Scalability: Corda is highly scalable, capable of handling large volumes of transactions without compromising performance or security.
+
+5. Consensus Mechanisms: Corda uses smart contracts written in common programming languages, making them easier to create and manage while ensuring regulatory compatibility.
+
+6. Workflow Efficiency: Corda flows automate complex business processes, providing efficient, modular, and fast processing of transactions.

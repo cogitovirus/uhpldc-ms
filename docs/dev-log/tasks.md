@@ -4,9 +4,9 @@ v0.1
 
 ## high priority
 
-- [ ] read docs on synapse
-- [ ] microsoft training for synapse
-- [ ] discord - zapier setup
+- [x] re-read / update the docs
+- [ ] synapse setup
+- [ ] corda setup
 
 ## medium priority
 
@@ -14,6 +14,9 @@ v0.1
 - [ ] setup - link rg with synapse. one command setup.
 - [ ] UI design
 - [ ] secure the exposed password
+- [ ] read docs on synapse
+- [ ] microsoft training for synapse
+- [ ] discord - zapier setup
 
 ## low priority
 

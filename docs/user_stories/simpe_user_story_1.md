@@ -1,4 +1,4 @@
-### Basic User Story
+# Basic User Story
 
 1. In the UI, the user is presented with a dropbox and an address to a secure S3 bucket where they can transfer their files.
 2. Upon file drop, a single or multiple blockchain addresses are presented and saved in the user's account.
