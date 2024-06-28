@@ -1,3 +1,9 @@
+# python-venv
+*myenv/
+# env variables
+.env
+# pycache
+*__pycache__/
 # Local .terraform directories
 **/.terraform/*
 
