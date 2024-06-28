@@ -1,11 +1,11 @@
 <!-- markdownlint-disable-next-line MD041 -->
 ![uhpldc-ms](docs/spectreseek_promo.png)
 
+**Big data processing based on first principles and system thinking.**
+
 **U**ltra-**H**igh **P**erformance **L**iquid **D**ata **C**hromatography --with-- **M**ass **S**pectrometry
 
 ## Introduction
-
-**Big data processing based on first principles and system thinking.**
 
 Azure + Synapse + LLMs + Corda = uhpldc-ms
 
