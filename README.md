@@ -17,6 +17,12 @@ Before you begin, ensure you have the following installed:
 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
+and that you are logged in into your subscrition:
+
+```sh
+az login
+```
+
 ## Installation
 
 Follow these steps to set up and deploy the infrastructure:
