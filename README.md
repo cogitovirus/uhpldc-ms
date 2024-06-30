@@ -29,7 +29,7 @@ Follow these steps to set up and deploy the infrastructure:
 
 Ensure you are authenticated to Azure CLI before running the commands. You can authenticate using Azure Active Directory (Azure AD) or provide storage account credentials.
 
-### Using azure resource manager (preferred)
+### Using azure resource manager (preferred / work in progress)
 
 1. **Open scripts/deploy and adjust the parameters**
 2. **run the script**
