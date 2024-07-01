@@ -4,28 +4,29 @@ v0.1
 
 ## high priority
 
+- [ ] UI design
 - [ ] working synapse flow
 - [ ] working synapse arm template
 - [ ] mocked blockchain
-- [ ] ui mockups
-
+- [ ] UI - load env load / prod - probably just node_env
 
 ## medium priority
 
 - [ ] setup - link rg with synapse. one command setup.
-- [ ] UI design
-- [ ] UI - load env load / prod - probably just node_env
 - [ ] secure the exposed password
 - [ ] read docs on synapse
 - [ ] microsoft training for synapse
-- [ ] discord - zapier setup
 
 ## low priority
 
-- [ ] UI - change regions to us-west1
-- [ ] remove 'example' from resource names
-- [ ] store location in a single variable
+- [ ] discord - zapier setup
 
+## Completed
+
+- [x] UI - change regions to eu-west1
+- [x] remove 'example' from resource names
+- [x] store location in a single variable
+- [x] ui mockups
 - [x] re-read / update the docs
 - [x] synapse setup
 - [x] corda setup
