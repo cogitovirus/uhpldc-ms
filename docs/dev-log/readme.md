@@ -9,5 +9,3 @@ url dataspectra.cogitovirus.com
 or
 
 dataspectra.io
-
-

@@ -29,27 +29,7 @@ Follow these steps to set up and deploy the infrastructure:
 
 Ensure you are authenticated to Azure CLI before running the commands. You can authenticate using Azure Active Directory (Azure AD) or provide storage account credentials.
 
-### Using azure resource manager (preferred / work in progress)
-
-1. **Open scripts/deploy and adjust the parameters**
-2. **run the script**
-
-```sh
-./scripts/deploy.sh
-```
-
-#### Teardown
-
-```sh
-./scripts/teardown.sh
-```
-
-### Using terraform (not supported yet)
-
-make sure you have terraform and terragrunt installed:
-
-- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/)
+### Using azure resource manager (work in progress)
 
 1. **Authenticate using Azure AD**:
 
@@ -57,33 +37,17 @@ make sure you have terraform and terragrunt installed:
     az login
     ```
 
-2. **export environment variables (or put them in your .bashrc / zshrc)**
-
-    ```sh
-    export TF_ENV="devwz"
-    export TF_PROJECT="ulcwz"
-    ```
-
-3. **run the bootstrap scripts**
-
-    ```sh
-    cd terraform/live/dev/bootstrap
-    terragrunt init
-    terragrunt apply
-    ```
-
-4. Copy the outputs, you will need them in a bit (apperantly I suck at terraform and can't link two things together)
-
-5. Setup synapse
-
-## Teardown of dev/prod
+2. **Open scripts/deploy and adjust the parameters**
+3. **run the script**
 
 ```sh
-# Navigate to the dev environment directory
-cd terragrunt/envs/dev
+./scripts/deploy.sh
+```
 
-# Destroy all resources in the dev environment
-terragrunt destroy-all
+### Teardown
+
+```sh
+./scripts/teardown.sh
 ```
 
 ## Additional Information

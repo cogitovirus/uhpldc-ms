@@ -4,7 +4,9 @@ v0.1
 
 ## high priority
 
-- [ ] UI design
+- [ ] arm template for the bucket
+
+- [ ] bucket + event setup
 - [ ] working synapse flow
 - [ ] working synapse arm template
 - [ ] mocked blockchain
@@ -23,6 +25,7 @@ v0.1
 
 ## Completed
 
+- [x] UI design
 - [x] UI - change regions to eu-west1
 - [x] remove 'example' from resource names
 - [x] store location in a single variable
