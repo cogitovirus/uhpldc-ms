@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-next-line MD041 -->
-![uhpldc-ms](docs/spectreseek_promo.png)
+![uhpldc-ms](docs/promo.png)
 
 ## Introduction
 
