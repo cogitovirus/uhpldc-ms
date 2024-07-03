@@ -9,7 +9,7 @@
 
 Azure + Synapse + LLMs + Corda = uhpldc-ms
 
-For more details see the [Whitepaper](docs/whitepaper/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
+For more details see the [whitepaper](docs/whitepaper/whitepaper_to_be_pdf.md), [faq](docs/faq.md) and [docs](docs/).
 
 ## Prerequisites
 
