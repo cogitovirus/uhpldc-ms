@@ -1,0 +1,56 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "string"
+        },
+        "sourceDatasetName": {
+            "type": "string"
+        },
+        "sinkDatasetName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Synapse/workspaces/pipelines",
+            "apiVersion": "2019-06-01-preview",
+            "name": "[concat(parameters('workspaceName'), '/CopyDataPipeline')]",
+            "properties": {
+                "activities": [
+                    {
+                        "name": "Copy Data",
+                        "type": "Copy",
+                        "inputs": [
+                            {
+                                "referenceName": "[parameters('sourceDatasetName')]",
+                                "type": "DatasetReference"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "referenceName": "[parameters('sinkDatasetName')]",
+                                "type": "DatasetReference"
+                            }
+                        ],
+                        "typeProperties": {
+                            "source": {
+                                "type": "BinarySource",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSReadSettings"
+                                }
+                            },
+                            "sink": {
+                                "type": "BinarySink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

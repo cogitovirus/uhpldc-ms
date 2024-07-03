@@ -1,0 +1,44 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "string"
+        },
+        "pipelineName": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "containerName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Synapse/workspaces/triggers",
+            "apiVersion": "2019-06-01-preview",
+            "name": "[concat(parameters('workspaceName'), '/BlobCreatedTrigger')]",
+            "properties": {
+                "type": "BlobEventsTrigger",
+                "typeProperties": {
+                    "blobPathBeginsWith": "[concat('/', parameters('containerName'), '/')]",
+                    "ignoreEmptyBlobs": true,
+                    "scope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
+                    "events": [
+                        "Microsoft.Storage.BlobCreated"
+                    ]
+                },
+                "pipelines": [
+                    {
+                        "pipelineReference": {
+                            "referenceName": "[parameters('pipelineName')]",
+                            "type": "PipelineReference"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

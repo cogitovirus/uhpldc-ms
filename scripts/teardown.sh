@@ -13,40 +13,60 @@ log() {
 }
 
 # Set variables
-LOCATION="polandcentral"
 RESOURCE_GROUP_NAME="uhpldc-ms-demo-wz"
-SYNAPSE_WORKSPACE_NAME="synapse-workspace-dev-polandcentral"
-STORAGE_ACCOUNT_PREFIX="synapsestorage"
 
-# Check if the Synapse workspace exists and delete it
-# if az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME &>/dev/null; then
-#     echo "Deleting Synapse workspace..."
-#     az synapse workspace delete --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --yes
-# else
-#     echo "Synapse workspace not found. Skipping deletion."
-# fi
+# Read deployments from log file
+DEPLOYMENTS_FILE="${SCRIPT_DIR}/deployments.log"
 
-# Delete the resource group
-# echo "Deleting resource group..."
-# az group delete --name $RESOURCE_GROUP_NAME --yes
-
-# Find and delete storage accounts
-log "INFO" "Searching for storage accounts with prefix '$STORAGE_ACCOUNT_PREFIX' in resource group '$RESOURCE_GROUP_NAME'"
-
-storage_accounts=$(az storage account list --resource-group $RESOURCE_GROUP_NAME --query "[?starts_with(name, '$STORAGE_ACCOUNT_PREFIX')].name" -o tsv)
-
-if [ -z "$storage_accounts" ]; then
-    log "INFO" "No storage accounts found with the specified prefix."
-else
-    for account in $storage_accounts; do
-        log "INFO" "Deleting storage account: $account"
-        az storage account delete --name $account --resource-group $RESOURCE_GROUP_NAME --yes
-        if [ $? -eq 0 ]; then
-            log "INFO" "Successfully deleted storage account: $account"
-        else
-            log "ERROR" "Failed to delete storage account: $account"
-        fi
-    done
+if [ ! -f "$DEPLOYMENTS_FILE" ]; then
+    log "ERROR" "Deployments log file not found: $DEPLOYMENTS_FILE"
+    exit 1
 fi
 
-log "INFO" "Resource deletion completed."
+while IFS=',' read -r DEPLOYMENT_ID STORAGE_ACCOUNT_NAME CONTAINER_NAME SYNAPSE_WORKSPACE_NAME
+do
+    log "INFO" "Processing teardown for Deployment ID: $DEPLOYMENT_ID"
+
+    # Delete Synapse Workspace
+    if az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME &>/dev/null; then
+        log "INFO" "Deleting Synapse workspace: $SYNAPSE_WORKSPACE_NAME"
+        az synapse workspace delete --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --yes
+        if [ $? -eq 0 ]; then
+            log "INFO" "Successfully deleted Synapse workspace: $SYNAPSE_WORKSPACE_NAME"
+        else
+            log "ERROR" "Failed to delete Synapse workspace: $SYNAPSE_WORKSPACE_NAME"
+        fi
+    else
+        log "INFO" "Synapse workspace not found: $SYNAPSE_WORKSPACE_NAME. Skipping deletion."
+    fi
+
+    # Delete Storage Account
+    if az storage account show --name $STORAGE_ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME &>/dev/null; then
+        log "INFO" "Deleting storage account: $STORAGE_ACCOUNT_NAME"
+        az storage account delete --name $STORAGE_ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --yes
+        if [ $? -eq 0 ]; then
+            log "INFO" "Successfully deleted storage account: $STORAGE_ACCOUNT_NAME"
+        else
+            log "ERROR" "Failed to delete storage account: $STORAGE_ACCOUNT_NAME"
+        fi
+    else
+        log "INFO" "Storage account not found: $STORAGE_ACCOUNT_NAME. Skipping deletion."
+    fi
+
+    log "INFO" "Completed teardown for Deployment ID: $DEPLOYMENT_ID"
+
+done < "$DEPLOYMENTS_FILE"
+
+# Clear the deployments log file
+> "$DEPLOYMENTS_FILE"
+
+log "INFO" "All resource deletions completed."
+
+# Uncomment the following lines if you want to delete the entire resource group
+# log "INFO" "Deleting resource group: $RESOURCE_GROUP_NAME"
+# az group delete --name $RESOURCE_GROUP_NAME --yes
+# if [ $? -eq 0 ]; then
+#     log "INFO" "Successfully deleted resource group: $RESOURCE_GROUP_NAME"
+# else
+#     log "ERROR" "Failed to delete resource group: $RESOURCE_GROUP_NAME"
+# fi

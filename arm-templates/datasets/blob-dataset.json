@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "string"
+        },
+        "linkedServiceName": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Synapse/workspaces/datasets",
+            "apiVersion": "2019-06-01-preview",
+            "name": "[concat(parameters('workspaceName'), '/BlobDataset')]",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "[parameters('linkedServiceName')]",
+                    "type": "LinkedServiceReference"
+                },
+                "type": "Binary",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "folderPath": "mycontainer/myfolder",
+                        "fileSystem": "myfilesystem"
+                    }
+                }
+            }
+        }
+    ]
+}
