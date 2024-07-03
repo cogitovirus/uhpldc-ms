@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "value": "WORKSPACE_NAME_PLACEHOLDER"
+        },
+        "location": {
+            "value": "LOCATION_PLACEHOLDER"
+        },
+        "sqlAdministratorLogin": {
+            "value": "SQL_ADMIN_LOGIN_PLACEHOLDER"
+        },
+        "sqlAdministratorLoginPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/KEY_VAULT_RG/providers/Microsoft.KeyVault/vaults/KEY_VAULT_NAME"
+                },
+                "secretName": "SECRET_NAME_PLACEHOLDER"
+            }
+        }
+    }
+}

@@ -17,12 +17,6 @@ Before you begin, ensure you have the following installed:
 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
-and that you are logged in into your subscrition:
-
-```sh
-az login
-```
-
 ## Installation
 
 Follow these steps to set up and deploy the infrastructure:
@@ -41,7 +35,7 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 3. **run the script**
 
 ```sh
-./scripts/deploy.sh
+SQL_ADMIN_PASSWORD=changeMe123! ./scripts/deploy.sh
 ```
 
 ### Teardown
