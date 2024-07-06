@@ -35,13 +35,13 @@ Ensure you are authenticated to Azure CLI before running the commands. You can a
 3. **run the script**
 
 ```sh
-SQL_ADMIN_PASSWORD=changeMe123! ./scripts/deploy.sh
+./deploy.sh P@ssw0rd123! # change the password. works on mac only at this point due to md5 lib
 ```
 
 ### Teardown
 
 ```sh
-./scripts/teardown.sh
+./teardown.sh
 ```
 
 ## Additional Information

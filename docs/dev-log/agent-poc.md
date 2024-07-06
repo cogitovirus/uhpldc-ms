@@ -1,4 +1,6 @@
-P@ssw0rd123!
+# Agent POC
+
+./deploy.sh P@ssw0rd123!
 
 - solid deploy resource group setup/teardown
 -- dynamic name

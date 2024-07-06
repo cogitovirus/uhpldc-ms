@@ -25,9 +25,10 @@ handle_error() {
 trap 'handle_error $LINENO' ERR
 
 # Set variables
+#TODO: this next line will only work on macOS
+DEPLOYMENT_ID=$(echo $RANDOM | md5 | cut -c1-5)  # e.g., a1b2c
 LOCATION="polandcentral"
-RESOURCE_GROUP_NAME="rg-demo-automated${DEPLOYMENT_ID}"
-DEPLOYMENT_ID=$(date +%Y%m%d%H%M)  # Use timestamp for unique identifier, removed seconds for shorter name
+RESOURCE_GROUP_NAME="rg-demo-automated-${DEPLOYMENT_ID}"
 STORAGE_ACCOUNT_NAME="synstore${DEPLOYMENT_ID}"  # Shortened name to fit 24 character limit
 CONTAINER_NAME="syncontainer"
 SYNAPSE_WORKSPACE_NAME="synws${DEPLOYMENT_ID}"
@@ -76,17 +77,17 @@ log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
 
 # Wait for Synapse Workspace to be fully provisioned
 log "INFO" "Waiting for Synapse Workspace to be fully provisioned..."
-az synapse workspace wait --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --created
+az synapse workspace wait --workspace-name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --created
 
 # Deploy Linked Service
 log "INFO" "Deploying Linked Service..."
 az deployment group create \
     --name DeployLinkedService \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}arm-templates/linked-services/storage-linked-service.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/linked-services/storage-linked-service.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME storageAccountName=$STORAGE_ACCOUNT_NAME \
-    --output none
-
+    --verbose
+    
 log "INFO" "Linked Service created for Storage Account $STORAGE_ACCOUNT_NAME"
 
 # Deploy Dataset
