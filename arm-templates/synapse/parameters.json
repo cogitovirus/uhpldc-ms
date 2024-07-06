@@ -3,21 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
-            "value": "synapse-workspace-dev-polandcentral"
+            "type": "string"
         },
         "location": {
-            "value": "Poland Central"
+            "type": "string"
         },
         "sqlAdministratorLogin": {
-            "value": "sqladmin"
+            "type": "string"
         },
         "sqlAdministratorLoginPassword": {
-            "reference": {
-                "keyVault": {
-                    "id": "/subscriptions/<subscription-id>/resourceGroups/<key-vault-resource-group>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"
-                },
-                "secretName": "synapse-sql-admin-password"
-            }
+            "type": "securestring"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "fileSystemName": {
+            "type": "string"
         }
     }
 }

@@ -26,7 +26,11 @@
             },
             "properties": {
                 "sqlAdministratorLogin": "[parameters('sqlAdministratorLogin')]",
-                "sqlAdministratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]"
+                "sqlAdministratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
+                "defaultDataLakeStorage": {
+                    "accountUrl": "[concat('https://', parameters('storageAccountName'), '.dfs.core.windows.net')]",
+                    "filesystem": "[parameters('fileSystemName')]"
+                }
             }
         }
     ]

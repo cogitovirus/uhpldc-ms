@@ -26,26 +26,33 @@ trap 'handle_error $LINENO' ERR
 
 # Set variables
 LOCATION="polandcentral"
-RESOURCE_GROUP_NAME="uhpldc-ms-demo-wz"
+RESOURCE_GROUP_NAME="rg-demo-automated${DEPLOYMENT_ID}"
 DEPLOYMENT_ID=$(date +%Y%m%d%H%M)  # Use timestamp for unique identifier, removed seconds for shorter name
 STORAGE_ACCOUNT_NAME="synstore${DEPLOYMENT_ID}"  # Shortened name to fit 24 character limit
 CONTAINER_NAME="syncontainer"
 SYNAPSE_WORKSPACE_NAME="synws${DEPLOYMENT_ID}"
 
-# At the beginning of your script
-if [ -z "$SQL_ADMIN_PASSWORD" ]; then
-  log "ERROR" "SQL_ADMIN_PASSWORD environment variable is not set."
-  exit 1
+# Check if SQL_ADMIN_PASSWORD is provided as a script argument
+if [ $# -eq 0 ]; then
+    log "ERROR" "SQL_ADMIN_PASSWORD is not provided. Usage: $0 <SQL_ADMIN_PASSWORD>"
+    exit 1
 fi
 
+SQL_ADMIN_PASSWORD=$1
+
 log "INFO" "Starting deployment with ID: $DEPLOYMENT_ID"
+
+log "INFO" "Creating Resource Group..."
+az group create --name "$RESOURCE_GROUP_NAME" --location "$LOCATION" --output none
+
+log "INFO" "Resource Group $RESOURCE_GROUP_NAME created in $LOCATION"
 
 # Deploy Storage Account
 log "INFO" "Deploying Storage Account..."
 az deployment group create \
     --name DeployStorageAccount \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/storage/storage.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/storage/storage.json" \
     --parameters storageAccountName=$STORAGE_ACCOUNT_NAME containerName=$CONTAINER_NAME location=$LOCATION \
     --output none
 
@@ -56,11 +63,13 @@ log "INFO" "Deploying Synapse Workspace..."
 az deployment group create \
     --name DeploySynapseWorkspace \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/synapse/azuredeploy.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/synapse/azuredeploy.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME \
                  location=$LOCATION \
                  sqlAdministratorLogin=sqladminuser \
                  sqlAdministratorLoginPassword="$SQL_ADMIN_PASSWORD" \
+                 storageAccountName=$STORAGE_ACCOUNT_NAME \
+                 fileSystemName=$CONTAINER_NAME \
     --output none
 
 log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
@@ -76,7 +85,7 @@ log "INFO" "Deploying Linked Service..."
 az deployment group create \
     --name DeployLinkedService \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/linked-services/storage-linked-service.json" \
+    --template-file "${SCRIPT_DIR}arm-templates/linked-services/storage-linked-service.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME storageAccountName=$STORAGE_ACCOUNT_NAME \
     --output none
 
@@ -87,7 +96,7 @@ log "INFO" "Deploying Dataset..."
 az deployment group create \
     --name DeployDataset \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/datasets/blob-dataset.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/datasets/blob-dataset.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME linkedServiceName=StorageLinkedService \
     --output none
 
@@ -98,7 +107,7 @@ log "INFO" "Deploying Pipeline..."
 az deployment group create \
     --name DeployPipeline \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/pipelines/copy-data-pipeline.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/pipelines/copy-data-pipeline.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME sourceDatasetName=BlobDataset sinkDatasetName=BlobDataset \
     --output none
 
@@ -109,7 +118,7 @@ log "INFO" "Deploying Trigger..."
 az deployment group create \
     --name DeployTrigger \
     --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/../arm-templates/triggers/blob-created-trigger.json" \
+    --template-file "${SCRIPT_DIR}/arm-templates/triggers/blob-created-trigger.json" \
     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME pipelineName=CopyDataPipeline storageAccountName=$STORAGE_ACCOUNT_NAME containerName=$CONTAINER_NAME \
     --output none
 
