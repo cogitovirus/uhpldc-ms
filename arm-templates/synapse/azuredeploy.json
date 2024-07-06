@@ -13,6 +13,12 @@
         },
         "sqlAdministratorLoginPassword": {
             "type": "securestring"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "fileSystemName": {
+            "type": "string"
         }
     },
     "resources": [

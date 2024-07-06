@@ -3,22 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workspaceName": {
-            "type": "string"
+            "value": "your-workspace-name"
         },
         "location": {
-            "type": "string"
+            "value": "your-location"
         },
         "sqlAdministratorLogin": {
-            "type": "string"
+            "value": "your-admin-username"
         },
         "sqlAdministratorLoginPassword": {
-            "type": "securestring"
+            "value": "your-admin-password"
         },
         "storageAccountName": {
-            "type": "string"
+            "value": "your-storage-account-name"
         },
         "fileSystemName": {
-            "type": "string"
+            "value": "your-file-system-name"
         }
     }
 }

@@ -74,8 +74,6 @@ az deployment group create \
 
 log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
 
-log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
-
 # Wait for Synapse Workspace to be fully provisioned
 log "INFO" "Waiting for Synapse Workspace to be fully provisioned..."
 az synapse workspace wait --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --created
