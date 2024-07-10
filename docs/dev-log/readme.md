@@ -6,30 +6,23 @@ url: dataspectra.cogitovirus.com
 
 v0.2 - making stuff work - due ?
 
-v0.1 - duck doc - due sunday
-
-- landing page
-- waitlist page
-- blog post explaining why I'm awesome
+v0.1 - duck doc
 
 ## high priority
 
-- [ ] make vite work with dist
-- [ ] work on the post
-- [ ] firebase for waitlist ?
-- [ ] promo / landing page design
+- [ ] bucket + event setup
+- [ ] working synapse flow
+- [ ] working synapse arm template
 
 
 ## medium priority
 
 - [ ] microsoft training for synapse
+- [ ] managed identity for linked service ?
 
 ## low priority
 
 
-- [ ] bucket + event setup
-- [ ] working synapse flow
-- [ ] working synapse arm template
 - [ ] mocked blockchain
 - [ ] setup - link rg with synapse. one command setup.
 - [ ] discord - zapier setup

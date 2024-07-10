@@ -16,6 +16,7 @@ For more details see the [whitepaper](docs/whitepaper/whitepaper_to_be_pdf.md), 
 Before you begin, ensure you have the following installed:
 
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- jq (brew install jq)
 
 ## Installation
 

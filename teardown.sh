@@ -3,7 +3,7 @@
 # Load variables from deployment
 source deployment_vars.sh
 
-RESOURCE_GROUP_NAME="rg-demo-automated"
+RESOURCE_GROUP_NAME="rg-demo-automated-5b268"
 
 # Delete resource group (this will delete all resources within it)
 echo "Deleting resource group..."

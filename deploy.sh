@@ -79,49 +79,59 @@ log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
 log "INFO" "Waiting for Synapse Workspace to be fully provisioned..."
 az synapse workspace wait --workspace-name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --created
 
-# Deploy Linked Service
-log "INFO" "Deploying Linked Service..."
-az deployment group create \
-    --name DeployLinkedService \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/arm-templates/linked-services/storage-linked-service.json" \
-    --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME storageAccountName=$STORAGE_ACCOUNT_NAME \
-    --verbose
-    
-log "INFO" "Linked Service created for Storage Account $STORAGE_ACCOUNT_NAME"
+# Get Workspace endpoints
+log "INFO" "Retrieving Workspace endpoints..."
+WorkspaceWeb=$(az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME | jq -r '.connectivityEndpoints | .web')
+WorkspaceDev=$(az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME | jq -r '.connectivityEndpoints | .dev')
+
+# Get Client IP
+log "INFO" "Retrieving Client IP..."
+ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
+ClientIP=${ClientIP##'Client Ip address : '}
+
+# Create firewall rule
+log "INFO" "Creating firewall rule for IP: $ClientIP"
+az synapse workspace firewall-rule create \
+    --end-ip-address $ClientIP \
+    --start-ip-address $ClientIP \
+    --name "Allow Client IP" \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --workspace-name $SYNAPSE_WORKSPACE_NAME
+
+log "INFO" "Firewall rule created successfully"
 
 # Deploy Dataset
-log "INFO" "Deploying Dataset..."
-az deployment group create \
-    --name DeployDataset \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/arm-templates/datasets/blob-dataset.json" \
-    --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME linkedServiceName=StorageLinkedService \
-    --output none
+# log "INFO" "Deploying Dataset..."
+# az deployment group create \
+#     --name DeployDataset \
+#     --resource-group "$RESOURCE_GROUP_NAME" \
+#     --template-file "${SCRIPT_DIR}/arm-templates/datasets/blob-dataset.json" \
+#     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME linkedServiceName=StorageLinkedService \
+#     --output none
 
-log "INFO" "Dataset created in Synapse Workspace"
+# log "INFO" "Dataset created in Synapse Workspace"
 
 # Deploy Pipeline
-log "INFO" "Deploying Pipeline..."
-az deployment group create \
-    --name DeployPipeline \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/arm-templates/pipelines/copy-data-pipeline.json" \
-    --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME sourceDatasetName=BlobDataset sinkDatasetName=BlobDataset \
-    --output none
+# log "INFO" "Deploying Pipeline..."
+# az deployment group create \
+#     --name DeployPipeline \
+#     --resource-group "$RESOURCE_GROUP_NAME" \
+#     --template-file "${SCRIPT_DIR}/arm-templates/pipelines/copy-data-pipeline.json" \
+#     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME sourceDatasetName=BlobDataset sinkDatasetName=BlobDataset \
+#     --output none
 
-log "INFO" "Pipeline created in Synapse Workspace"
+# log "INFO" "Pipeline created in Synapse Workspace"
 
 # Deploy Trigger
-log "INFO" "Deploying Trigger..."
-az deployment group create \
-    --name DeployTrigger \
-    --resource-group "$RESOURCE_GROUP_NAME" \
-    --template-file "${SCRIPT_DIR}/arm-templates/triggers/blob-created-trigger.json" \
-    --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME pipelineName=CopyDataPipeline storageAccountName=$STORAGE_ACCOUNT_NAME containerName=$CONTAINER_NAME \
-    --output none
+# log "INFO" "Deploying Trigger..."
+# az deployment group create \
+#     --name DeployTrigger \
+#     --resource-group "$RESOURCE_GROUP_NAME" \
+#     --template-file "${SCRIPT_DIR}/arm-templates/triggers/blob-created-trigger.json" \
+#     --parameters workspaceName=$SYNAPSE_WORKSPACE_NAME pipelineName=CopyDataPipeline storageAccountName=$STORAGE_ACCOUNT_NAME containerName=$CONTAINER_NAME \
+#     --output none
 
-log "INFO" "Blob Created Trigger deployed in Synapse Workspace"
+# log "INFO" "Blob Created Trigger deployed in Synapse Workspace"
 
 # Save deployment info for teardown
 echo "$DEPLOYMENT_ID,$STORAGE_ACCOUNT_NAME,$CONTAINER_NAME,$SYNAPSE_WORKSPACE_NAME" >> "${SCRIPT_DIR}/deployments.log"

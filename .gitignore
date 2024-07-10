@@ -51,4 +51,4 @@ scripts/deployments.log
 # arm parameters
 # TODO: do this for all arm templates
 arm-templates/synapse/parameters.json
-
+deployments.log
