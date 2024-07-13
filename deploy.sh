@@ -79,6 +79,24 @@ log "INFO" "Synapse Workspace $SYNAPSE_WORKSPACE_NAME created"
 log "INFO" "Waiting for Synapse Workspace to be fully provisioned..."
 az synapse workspace wait --workspace-name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --created
 
+# Assign Storage Blob Data Contributor role to Synapse workspace
+log "INFO" "Assigning Storage Blob Data Contributor role to Synapse workspace..."
+SYNAPSE_MANAGED_IDENTITY=$(az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --query identity.principalId -o tsv)
+STORAGE_ACCOUNT_ID=$(az storage account show --name $STORAGE_ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --query id -o tsv)
+az role assignment create --assignee-object-id $SYNAPSE_MANAGED_IDENTITY --assignee-principal-type ServicePrincipal --role "Storage Blob Data Contributor" --scope $STORAGE_ACCOUNT_ID
+
+# Enable Azure services access to the storage account
+log "INFO" "Enabling Azure services access to the storage account..."
+az storage account update --name $STORAGE_ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --bypass AzureServices
+
+# Add Synapse workspace IP to storage account firewall
+log "INFO" "Adding Synapse workspace IP to storage account firewall..."
+SYNAPSE_IP=$(az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME --query connectivityEndpoints.sqlOnDemand -o tsv | awk -F: '{print $2}' | tr -d '/')
+az storage account network-rule add --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --ip-address $SYNAPSE_IP
+
+# Ensure the default action is to deny access
+az storage account update --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME --default-action Deny
+
 # Get Workspace endpoints
 log "INFO" "Retrieving Workspace endpoints..."
 WorkspaceWeb=$(az synapse workspace show --name $SYNAPSE_WORKSPACE_NAME --resource-group $RESOURCE_GROUP_NAME | jq -r '.connectivityEndpoints | .web')
@@ -99,6 +117,7 @@ az synapse workspace firewall-rule create \
     --workspace-name $SYNAPSE_WORKSPACE_NAME
 
 log "INFO" "Firewall rule created successfully"
+
 
 # Deploy Dataset
 # log "INFO" "Deploying Dataset..."
